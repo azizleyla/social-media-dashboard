@@ -1,0 +1,45 @@
+:root {
+  --font-main: "Fraunces", serif;
+  --font-second: "Barlow", sans-serif;
+  --lime-green: #1db489;
+  --color-blue: #178ff5;
+  --bright-red: #dc414c;
+  --white: #ffffff;
+  --very-pale: #f1f3fa;
+  --light-grayish-blue: #f0f2fa;
+  --dark-grayish-blue: #8c98c6;
+  --body-color: #1e202a;
+  --color-dark-blue: #20222f;
+  --gray-light: #f7f9ff;
+  --gray-card-background: #f1f3fa;
+  --color-red: #c4032b;
+  --color-light-red: #dc414c;
+}
+[data-theme="light"] {
+  --body-color: #fff;
+}
+* {
+  margin: 0;
+  padding: 0;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%; //1 rem = 10px/16px= 62.5%
+}
+
+body {
+  font-size: 18px;
+  background: var(--body-color);
+  font-family: "Inter";
+  position: relative;
+}
+.red {
+  color: var(--color-light-red);
+}
