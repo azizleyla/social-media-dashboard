@@ -1,3 +1,16 @@
+.container {
+  max-width: 110rem;
+  margin: 10px auto;
+  position: relative;
+  bottom: 130px;
+}
+
+@media screen and (max-width: 776px) {
+  .container {
+    padding: 0 3rem;
+  }
+}
+
 .header {
   height: 24rem;
   background-color: var(--color-dark-blue);
@@ -40,19 +53,6 @@
   margin-bottom: 2rem;
 }
 
-.container {
-  max-width: 110rem;
-  margin: 10px auto;
-  position: relative;
-  bottom: 130px;
-}
-
-@media screen and (max-width: 776px) {
-  .container {
-    padding: 0 3rem;
-  }
-}
-
 .card {
   display: -ms-grid;
   display: grid;
@@ -72,19 +72,19 @@
   -o-border-radius: 5px;
 }
 
-.card__single-blue {
+.card__single--blue {
   border-top: 4px solid var(--color-blue);
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
 }
 
-.card__single-linear {
+.card__single--linear {
   border-top: 4px solid;
   -o-border-image: linear-gradient(45deg, red, blue) 10;
      border-image: linear-gradient(45deg, red, blue) 10;
 }
 
-.card__single-red {
+.card__single--red {
   border-top: 4px solid var(--color-red);
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
@@ -152,6 +152,10 @@
           align-items: center;
   color: #1eb589;
   margin-top: 2.5rem;
+}
+
+.card__date--red {
+  color: var(--color-light-red);
 }
 
 .card__date p {
@@ -327,10 +331,5 @@ body {
   font-size: 18px;
   background: var(--body-color);
   font-family: "Inter";
-  position: relative;
-}
-
-.red {
-  color: var(--color-light-red);
 }
 /*# sourceMappingURL=main.css.map */
