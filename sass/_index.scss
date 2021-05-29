@@ -1,9 +1,10 @@
 .container {
+  padding: 0 1rem;
   max-width: 110rem;
   margin: 10px auto;
   position: relative;
   bottom: 130px;
-  @media screen and (max-width: 776px) {
+  @media screen and (max-width: 991px) {
     padding: 0 3rem;
   }
 }
@@ -21,7 +22,7 @@
   -ms-border-radius: 0px 0px 20px 20px;
   -o-border-radius: 0px 0px 20px 20px;
   @media (max-width: 576px) {
-    padding: 3rem 2rem;
+    padding: 3rem;
     justify-content: start;
     flex-direction: column;
   }
@@ -37,9 +38,8 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   grid-gap: 2.4rem 3rem;
-
   &__single {
-    background-color: #252b42;
+    background-color: var(--carts-color);
     padding: 3.2rem 6.4rem;
     text-align: center;
     border-radius: 5px;
@@ -78,7 +78,7 @@
   }
   &__follower {
     &-count {
-      color: #fff;
+      color: var(--count-color);
       font-size: 5.6rem;
       line-height: 4.8rem;
       font-family: "Inter";
@@ -90,12 +90,12 @@
     }
     &-text {
       letter-spacing: 5px;
-      font-size: 1.2rem;
+      font-size: 1.3rem;
       font-weight: bold;
       font-family: "Inter";
       text-transform: uppercase;
       line-height: 1.5rem;
-      color: var(--dark-grayish-blue);
+      color: var(--color-view-text);
     }
   }
   &__date {
@@ -134,7 +134,7 @@
 .card {
   &__overview {
     padding: 2.6rem 2.4rem;
-    background-color: #252b42;
+    background-color: var(--carts-color);
     display: flex;
     justify-content: space-between;
     border-radius: 5px;
@@ -147,7 +147,7 @@
     display: flex;
     flex-direction: column;
     &-text {
-      color: var(--dark-grayish-blue);
+      color: var(--color-view-text);
       font-size: 1.4rem;
       line-height: 1.6rem;
       font-weight: 700;
@@ -155,7 +155,7 @@
       margin-bottom: 2.1rem;
     }
     &-count {
-      color: #fff;
+      color: var(--count-color);
       font-weight: 700;
       font-size: 3.2rem;
       font-family: "Inter";
@@ -165,10 +165,13 @@
   &__social-media {
     display: flex;
     flex-direction: column;
+    align-items: center;
   }
 }
 //toggle button
-
+.icon {
+  align-self: flex-end;
+}
 .switch {
   display: inline-block;
   position: relative;

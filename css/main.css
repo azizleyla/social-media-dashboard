@@ -1,11 +1,12 @@
 .container {
+  padding: 0 1rem;
   max-width: 110rem;
   margin: 10px auto;
   position: relative;
   bottom: 130px;
 }
 
-@media screen and (max-width: 776px) {
+@media screen and (max-width: 991px) {
   .container {
     padding: 0 3rem;
   }
@@ -35,7 +36,7 @@
 
 @media (max-width: 576px) {
   .header {
-    padding: 3rem 2rem;
+    padding: 3rem;
     -webkit-box-pack: start;
         -ms-flex-pack: start;
             justify-content: start;
@@ -62,7 +63,7 @@
 }
 
 .card__single {
-  background-color: #252b42;
+  background-color: var(--carts-color);
   padding: 3.2rem 6.4rem;
   text-align: center;
   border-radius: 5px;
@@ -113,7 +114,7 @@
 }
 
 .card__follower-count {
-  color: #fff;
+  color: var(--count-color);
   font-size: 5.6rem;
   line-height: 4.8rem;
   font-family: "Inter";
@@ -131,12 +132,12 @@
 
 .card__follower-text {
   letter-spacing: 5px;
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   font-weight: bold;
   font-family: "Inter";
   text-transform: uppercase;
   line-height: 1.5rem;
-  color: var(--dark-grayish-blue);
+  color: var(--color-view-text);
 }
 
 .card__date {
@@ -183,7 +184,7 @@
 
 .card__overview {
   padding: 2.6rem 2.4rem;
-  background-color: #252b42;
+  background-color: var(--carts-color);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -208,7 +209,7 @@
 }
 
 .card__view-text {
-  color: var(--dark-grayish-blue);
+  color: var(--color-view-text);
   font-size: 1.4rem;
   line-height: 1.6rem;
   font-weight: 700;
@@ -217,7 +218,7 @@
 }
 
 .card__view-count {
-  color: #fff;
+  color: var(--count-color);
   font-weight: 700;
   font-size: 3.2rem;
   font-family: "Inter";
@@ -232,6 +233,14 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.icon {
+  -ms-flex-item-align: end;
+      align-self: flex-end;
 }
 
 .switch {
@@ -298,15 +307,20 @@ input[type="checkbox"]:checked + .slider::before {
   --light-grayish-blue: #f0f2fa;
   --dark-grayish-blue: #8c98c6;
   --body-color: #1e202a;
-  --color-dark-blue: #20222f;
+  --carts-color: #252b42;
   --gray-light: #f7f9ff;
   --gray-card-background: #f1f3fa;
   --color-red: #c4032b;
   --color-light-red: #dc414c;
+  --count-color: #fff;
+  --color-view-text: #8c98c6;
 }
 
 [data-theme="light"] {
   --body-color: #fff;
+  --carts-color: #f1f3fa;
+  --count-color: #000;
+  --color-view-text: #63687d;
 }
 
 * {

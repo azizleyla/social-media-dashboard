@@ -9,14 +9,19 @@
   --light-grayish-blue: #f0f2fa;
   --dark-grayish-blue: #8c98c6;
   --body-color: #1e202a;
-  --color-dark-blue: #20222f;
+  --carts-color: #252b42;
   --gray-light: #f7f9ff;
   --gray-card-background: #f1f3fa;
   --color-red: #c4032b;
   --color-light-red: #dc414c;
+  --count-color: #fff;
+  --color-view-text: #8c98c6;
 }
 [data-theme="light"] {
   --body-color: #fff;
+  --carts-color: #f1f3fa;
+  --count-color: #000;
+  --color-view-text: #63687d;
 }
 * {
   margin: 0;

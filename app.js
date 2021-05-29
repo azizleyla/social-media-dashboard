@@ -1,3 +1,99 @@
+const firstData = [
+    { socialMedia: 'facebook', account: "@nathanf", followerCount: "1987", todayStats: 12, increase: true },
+    { socialMedia: 'twitter', account: "@nathanf", followerCount: "1044", todayStats: 99, increase: true },
+    { socialMedia: 'instagram', account: "@realnathanf", followerCount: '11k', todayStats: 1099, increase: true },
+    { socialMedia: 'youtube', account: "Nathan F.", followerCount: "8239", todayStats: 144, increase: false }
+]
+const card = document.querySelector('.card');
+firstData.forEach(data => {
+    const { socialMedia, account, followerCount, todayStats, increase } = data;
+    const div = document.createElement('div');
+    div.setAttribute('class', "card__single card__single--blue");
+    const accountDiv = document.createElement('div');
+    accountDiv.className = "card__account";
+    const img = document.createElement('img');
+    img.src = `images/icon-${socialMedia}.svg`;
+
+    const span = document.createElement('span')
+    span.textContent = account;
+    accountDiv.append(img, span);
+
+    const divFollower = document.createElement('div');
+    divFollower.className = "card__follower";
+    const spanCount = document.createElement('span');
+    spanCount.className = "card__follower-count";
+    spanCount.textContent = followerCount;
+    const spanText = document.createElement('span');
+    spanText.textContent = socialMedia === "youtube" ? "Subscribes" : "Followers";
+    spanText.className = "card__follower-text";
+    divFollower.append(spanCount, spanText);
+    const divDate = document.createElement('div');
+
+    divDate.setAttribute('class', `${increase ? "card__date" : "card__date card__date--red"}`)
+    const img2 = document.createElement('img');
+
+    const p = document.createElement('p');
+    p.textContent = `${todayStats} Today`
+    img2.src = `${increase ? "images/arrow.png" : "images/arrow2.png"}`;
+    divDate.append(img2, p);
+
+    div.append(accountDiv, divFollower, divDate);
+
+    card.append(div);
+
+})
+const card2 = document.querySelectorAll('.card')[1];
+const secondData = [
+    { types: "Page Views", socialMedia: "facebook", number: "87", percentage: "3%", increase: true },
+    { types: "Likes", socialMedia: "facebook", number: "52k", percentage: "2%", increase: false },
+    { types: "Likes", socialMedia: "instagram", number: "5462", percentage: "2257%", increase: true },
+    { types: "Profile Views", socialMedia: "instagram", number: "52k", percentage: "1375%", increase: true },
+    { types: "Retweets", socialMedia: "twitter", number: "117", percentage: "303%", increase: true },
+    { types: "Likes", socialMedia: "twitter", number: "507", percentage: "553", increase: true },
+    { types: "Likes", socialMedia: "youtube", number: "105", percentage: "19%", increase: false },
+    { types: "Total Views", socialMedia: "youtube", number: "1407", percentage: "12%", increase: false },
+
+];
+//Overview Cards
+secondData.forEach(data => {
+    const { types, socialMedia, number, percentage, increase } = data;
+    const cardOverview = document.createElement('div');
+    cardOverview.setAttribute('class', 'card__overview')
+
+    const viewCard = document.createElement('div');
+    viewCard.className = "card__view";
+    const viewText = document.createElement('p');
+    viewText.setAttribute('class', "card__view-text");
+    viewText.textContent = types;
+    const viewCount = document.createElement('p');
+    viewCount.setAttribute('class', "card__view-count");
+    viewCount.textContent = number;
+    viewCard.append(viewText, viewCount);
+
+    const socialMediaCard = document.createElement('div');
+    socialMediaCard.setAttribute('class', "card__social-media");
+    const socialMediaImg = document.createElement('img');
+    socialMediaImg.setAttribute('class', 'icon');
+    socialMediaImg.src = `images/icon-${socialMedia}.svg`;
+
+    const cardPercentage = document.createElement('div');
+
+    cardPercentage.setAttribute('class', `${increase ? 'card__date' : "card__date card__date--red"}`);
+    const iconUporDown = document.createElement('img');
+    iconUporDown.src = `${increase ? "images/arrow.png" : "images/arrow2.png"}`;
+    const percentageElement = document.createElement('p');
+    percentageElement.textContent = percentage;
+    cardPercentage.append(iconUporDown, percentageElement);
+    socialMediaCard.append(socialMediaImg, cardPercentage);
+    cardOverview.append(viewCard, socialMediaCard);
+    card2.append(cardOverview);
+
+})
+
+
+
+
+//Light and Dark Mode
 const input = document.querySelector('input');
 const cardsSingle = document.querySelectorAll('.card__single');
 const cardFollowerCounts = document.querySelectorAll('.card__follower-count');
