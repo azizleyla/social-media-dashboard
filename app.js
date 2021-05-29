@@ -1,14 +1,14 @@
 const firstData = [
-    { socialMedia: 'facebook', account: "@nathanf", followerCount: "1987", todayStats: 12, increase: true },
-    { socialMedia: 'twitter', account: "@nathanf", followerCount: "1044", todayStats: 99, increase: true },
-    { socialMedia: 'instagram', account: "@realnathanf", followerCount: '11k', todayStats: 1099, increase: true },
-    { socialMedia: 'youtube', account: "Nathan F.", followerCount: "8239", todayStats: 144, increase: false }
+    { socialMedia: 'facebook', account: "@nathanf", followerCount: "1987", todayStats: 12, increase: true, border: "blue" },
+    { socialMedia: 'twitter', account: "@nathanf", followerCount: "1044", todayStats: 99, increase: true, border: "blue" },
+    { socialMedia: 'instagram', account: "@realnathanf", followerCount: '11k', todayStats: 1099, increase: true, border: "linear" },
+    { socialMedia: 'youtube', account: "Nathan F.", followerCount: "8239", todayStats: 144, increase: false, border: "red" }
 ]
 const card = document.querySelector('.card');
 firstData.forEach(data => {
-    const { socialMedia, account, followerCount, todayStats, increase } = data;
+    const { socialMedia, account, followerCount, todayStats, increase, border } = data;
     const div = document.createElement('div');
-    div.setAttribute('class', "card__single card__single--blue");
+    div.setAttribute('class', border === "blue" ? "card__single card__single--blue" : border === "red" ? "card__single card__single--red" : border === "linear" ? "card__single card__single--linear" : false);
     const accountDiv = document.createElement('div');
     accountDiv.className = "card__account";
     const img = document.createElement('img');
