@@ -7,39 +7,25 @@ const firstData = [
 const card = document.querySelector('.card');
 firstData.forEach(data => {
     const { socialMedia, account, followerCount, todayStats, increase, border } = data;
-    const div = document.createElement('div');
-    div.setAttribute('class', border === "blue" ? "card__single card__single--blue" : border === "red" ? "card__single card__single--red" : border === "linear" ? "card__single card__single--linear" : false);
-    const accountDiv = document.createElement('div');
-    accountDiv.className = "card__account";
-    const img = document.createElement('img');
-    img.src = `images/icon-${socialMedia}.svg`;
-
-    const span = document.createElement('span')
-    span.textContent = account;
-    accountDiv.append(img, span);
-
-    const divFollower = document.createElement('div');
-    divFollower.className = "card__follower";
-    const spanCount = document.createElement('span');
-    spanCount.className = "card__follower-count";
-    spanCount.textContent = followerCount;
-    const spanText = document.createElement('span');
-    spanText.textContent = socialMedia === "youtube" ? "Subscribes" : "Followers";
-    spanText.className = "card__follower-text";
-    divFollower.append(spanCount, spanText);
-    const divDate = document.createElement('div');
-
-    divDate.setAttribute('class', `${increase ? "card__date" : "card__date card__date--red"}`)
-    const img2 = document.createElement('img');
-
-    const p = document.createElement('p');
-    p.textContent = `${todayStats} Today`
-    img2.src = `${increase ? "images/arrow.png" : "images/arrow2.png"}`;
-    divDate.append(img2, p);
-
-    div.append(accountDiv, divFollower, divDate);
-
-    card.append(div);
+    const html = `
+     <div class="card__single card__single--${border}">
+     <div class="card__account">
+        <img src="images/icon-${socialMedia}.svg">
+        <span>${account}</span>
+    </div>
+    <div class="card__follower">
+        <span class="card__follower-count">${followerCount}</span>
+        <span class="card__follower-text">${socialMedia === 'youtube' ? "Subscribes" : "Followers"}</span>
+    </div>
+    <div class="${increase ? "card__date" : "card__date card__date--red"}">
+        <img src="images/${increase ? "arrow" : "arrow2"}.png" >
+            <p>
+                ${todayStats} today
+        </p>
+    </div >
+    </div >
+        `
+    card.insertAdjacentHTML('beforeend', html);
 
 })
 const card2 = document.querySelectorAll('.card')[1];
@@ -57,36 +43,22 @@ const secondData = [
 //Overview Cards
 secondData.forEach(data => {
     const { types, socialMedia, number, percentage, increase } = data;
-    const cardOverview = document.createElement('div');
-    cardOverview.setAttribute('class', 'card__overview')
-
-    const viewCard = document.createElement('div');
-    viewCard.className = "card__view";
-    const viewText = document.createElement('p');
-    viewText.setAttribute('class', "card__view-text");
-    viewText.textContent = types;
-    const viewCount = document.createElement('p');
-    viewCount.setAttribute('class', "card__view-count");
-    viewCount.textContent = number;
-    viewCard.append(viewText, viewCount);
-
-    const socialMediaCard = document.createElement('div');
-    socialMediaCard.setAttribute('class', "card__social-media");
-    const socialMediaImg = document.createElement('img');
-    socialMediaImg.setAttribute('class', 'icon');
-    socialMediaImg.src = `images/icon-${socialMedia}.svg`;
-
-    const cardPercentage = document.createElement('div');
-
-    cardPercentage.setAttribute('class', `${increase ? 'card__date' : "card__date card__date--red"}`);
-    const iconUporDown = document.createElement('img');
-    iconUporDown.src = `${increase ? "images/arrow.png" : "images/arrow2.png"}`;
-    const percentageElement = document.createElement('p');
-    percentageElement.textContent = percentage;
-    cardPercentage.append(iconUporDown, percentageElement);
-    socialMediaCard.append(socialMediaImg, cardPercentage);
-    cardOverview.append(viewCard, socialMediaCard);
-    card2.append(cardOverview);
+    const html = `
+        <div class="card__overview" >
+    <div class="card__view">
+        <p class="card__view-text">${types}</p>
+        <p class="card__view-count">${number}</p>
+    </div>
+    <div class="card__social-media">
+        <img src="images/icon-${socialMedia}.svg">
+        <div class="${increase ? "card__date" : "card__date card__date--red"}">
+            <img src="images/${increase ? "arrow.png" : "arrow2.png"}">
+            <p>${percentage}</p>
+        </div>
+    </div>
+ </div>
+    `
+    card2.insertAdjacentHTML('beforeend', html)
 
 })
 
@@ -106,21 +78,6 @@ function isLightMode(isLight) {
     document.querySelector('.header').style.backgroundColor = isLight ? "#f1f3fa" : "#20222f";
     document.querySelector('.header__heading').style.color = isLight ? "#000" : "#fff";
     document.querySelector('.heading-overview').style.color = isLight ? "#63687d" : "#fff";
-    cardsSingle.forEach(card => {
-        card.style.backgroundColor = isLight ? "#f1f3fa" : "#252b42";
-    })
-    cardFollowerCounts.forEach(count => {
-        count.style.color = isLight ? "#000" : "#fff";
-    })
-    cardsOverview.forEach(cardOverview => {
-        cardOverview.style.backgroundColor = isLight ? "#f1f3fa" : "#252b42";
-    })
-    cardsViewCount.forEach(cardViewCount => {
-        cardViewCount.style.color = isLight ? "#000" : "#fff";
-    })
-    cardsViewText.forEach(cardViewText => {
-        cardViewText.style.color = isLight ? "#63687D" : "#8c98c6"
-    })
     toggle.style.background = isLight ? "#979797" : "linear-gradient(225deg, #40db82 0%, #388fe7 98.02%)";
 }
 function DarkandLightMode() {
@@ -133,3 +90,5 @@ function DarkandLightMode() {
         isLightMode(false)
     }
 }
+const heading = document.querySelector('.heading-overview');
+heading.textContent = new Date().toDateString()
